@@ -22,11 +22,13 @@ export async function getStaticProps() {
     'https://api.github.com/repos/mtliendo/slack-link-surfer/issues',
     {
       headers: {
-        Authorization: 'token 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',
+        Authorization: `token ${process.env.GH_TOKEN}`,
       },
     }
   )
   const blogPosts = await response.json()
+  console.log({ blogPosts })
   console.log('laoding')
+  console.log(`token ${process.env.GH_TOKEN}`)
   return { props: { blogPosts }, revalidate: 60 }
 }
